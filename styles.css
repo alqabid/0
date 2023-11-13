@@ -3,6 +3,8 @@ body {
     margin: 20px;
 }
 
+/* ... (existing styles) ... */
+
 .contact-info {
     margin-bottom: 20px;
 }
@@ -10,4 +12,60 @@ body {
 .call-logo img {
     width: 50px; /* Adjust the size of your phone icon as needed */
     cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+    /* Adjust styles for smaller screens (e.g., mobile devices) */
+
+    header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .logo {
+        margin-bottom: 10px;
+    }
+
+    nav {
+        margin-top: 20px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    section {
+        padding: 20px;
+    }
+
+    .product {
+        flex-direction: column;
+    }
+
+    .product img {
+        max-width: 100%; /* Make images responsive */
+    }
+
+    .product-details {
+        text-align: center;
+        padding: 20px;
+    }
+
+    .contact-info {
+        margin-bottom: 10px;
+    }
+
+    .call-logo img {
+        width: 30px; /* Adjust the size for smaller screens */
+    }
+
+    footer {
+        text-align: center;
+    }
 }
