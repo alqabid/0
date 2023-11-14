@@ -378,7 +378,13 @@
         <button id="assistant-btn" onclick="askAssistant()">Ask</button>
         <div id="assistant-response"></div>
     </div>
-
+<script>
+        function sendWhatsApp(productName) {
+            var message = "I want to know the aviable; " + productName;
+            var encodedMessage = encodeURI(message);
+            window.open("https://wa.me/233238318021?text=" + encodedMessage, "_blank");
+        }
+    </script>
     <script>
         function askAssistant() {
             var question = document.getElementById('assistant-input').value;
