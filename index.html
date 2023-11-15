@@ -76,6 +76,8 @@
         bottom: 0;
         text-align: center;
         width: 100%;
+		
+		
     }
 
     .product-container {
@@ -147,7 +149,7 @@
 
         /* Additional styles for the blog section */
         .blog-post {
-           background-color: rgba(0, 0, 0, 0.9);
+           background-color: rgba(0, 0, 0, 0.7);
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
             padding: 20px;
@@ -194,7 +196,7 @@
 
 <body>
     <div class="background"></div>
-   
+    
         <header>
             <div class="logo"><strong>DreamChasers Laptops</strong></div>
             <nav>
@@ -207,7 +209,8 @@
                 </ul>
             </nav>
         </header>
-        <div class="container">
+		<div class="container">
+
         <section id="banner">
             <h1>Welcome to DreamChasers Laptops</h1>
             <p>Your gateway to a world where dreams meet technology!</p>
@@ -303,9 +306,10 @@
 
         </section>
 
-        <section id="about" class="about-section">
+        <section id="about" class="about-section"><div class="blog-post">
             <h2>About Us</h2>
             <p>Welcome to Dream Chasers Laptops, where passion for technology meets the thrill of chasing dreams! We're not just a store; we're a community of tech enthusiasts dedicated to turning aspirations into reality, one laptop at a time. From sleek ultrabooks to powerhouse gaming rigs, we're here to fuel your journey of innovation. Because at Dream Chasers, we believe that the right laptop can be the catalyst for extraordinary adventures. Join us in the pursuit of dreams – where every click, every keystroke, takes you one step closer to greatness!</p>
+            </div>
         </section>
 
         <section id="blog" class="blog-section">
@@ -334,6 +338,7 @@
         </section>
 
         <section id="contact" class="contact-section">
+		<div class="blog-post">
             <h2>Contact Us</h2>
             <p>Feel free to reach out to us via email if you have any inquiries:</p>
             <!-- Your Contact Information -->
@@ -348,8 +353,9 @@
                     <img src="phone-icon.png" alt="Call Us">
                 </a>
             </div>
+			</div>
         </section>
-		
+		<div class="blog-post">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/jW6B-hYyZl0?si=Qtdv_owb522gN62U" frameborder="0" allowfullscreen></iframe>
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Ed0dWP01FkI?si=BZ0T37zrmuAxUaQJ" frameborder="0" allowfullscreen></iframe>
@@ -357,7 +363,7 @@
 <iframe width="560" height="315" src="https://www.youtube.com/embed/r7COWvxlN5g?si=jnRJAK5EQz8FG__3" frameborder="0" allowfullscreen></iframe>
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed//H71IxqmCfxQ?si=do0p1OvHaBP4K6qy" frameborder="0" allowfullscreen></iframe>
-
+</div>
 </br>
 
         <footer>
@@ -392,7 +398,7 @@
             var question = document.getElementById('assistant-input').value;
             if (question.trim() !== '') {
                 // Mock response, replace with actual logic
-                var response = "I'm sorry, please click on the "CHAT ME" button and you can ask Mr Qabid any question for assistance.THANK YOU....";
+                var response =  "I'm sorry, please click on the "CHAT ME" button and you can ask Mr Qabid any question for assistance.THANK YOU....";
                 document.getElementById('assistant-response').innerText = response;
             }
         }
