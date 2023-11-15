@@ -38,17 +38,13 @@
     }
 
     header {
-    background-color: #333;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 30px;
-    position: static;  /* Add this line to fix the header */
-    width: 100%;      /* Add this line to make it full-width */
-    z-index: 1000;    /* Add this line to control the stacking order */
-}
-
+        background-color:#333;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 30px;
+    }
 
     nav ul {
         display: flex;
@@ -67,11 +63,9 @@
         text-decoration: none;
     }
 
-    section#banner {
-    color: white;
-    padding: 40px;
-    margin-top: 90px; /* Add margin to the top (adjust as needed) */
-
+    section {
+        color: white;
+        padding: 40px;
     }
 
     footer {
@@ -97,8 +91,6 @@
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.17) ;
         padding: 20px;
         text-align: center;
-    color: white;
-
     }
 
     .product img {
@@ -196,44 +188,7 @@
             border-radius: 5px;
             cursor: pointer;
         }
-	    @media only screen and (max-width: 768px) {
-    header {
-        flex-direction: column;
-        text-align: center;
-        padding: 15px; /* Add padding for better spacing */
-    }
-
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    nav ul li {
-        margin: 10px 0;
-    }
-
-    .product-container {
-        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
-        gap: 15px; /* Adjust the gap for better spacing */
-        padding: 10px; /* Add padding for better spacing */
-    }
-
-    .product {
-        width: 100%;
-        margin-bottom: 20px; /* Add margin for better spacing between products */
-    }
-
-    .blog-post,
-    .contact-section {
-        padding: 20px; /* Add padding for better spacing */
-        margin-bottom: 20px; /* Add margin for better spacing between sections */
-    }
-
-    footer {
-        text-align: center;
-    }
-}
-
+		
     </style>
 </head>
 
@@ -253,7 +208,7 @@
             </nav>
         </header>
 
-        <section id="banner" class="section-with-margin">
+        <section id="banner">
             <h1>Welcome to DreamChasers Laptops</h1>
             <p>Your gateway to a world where dreams meet technology!</p>
         </section>
@@ -424,19 +379,20 @@
         <button id="assistant-btn" onclick="askAssistant()">Ask</button>
         <div id="assistant-response"></div>
     </div>
-<script>
+	<script>
         function sendWhatsApp(productName) {
             var message = "I want to know the aviable; " + productName;
             var encodedMessage = encodeURI(message);
             window.open("https://wa.me/233238318021?text=" + encodedMessage, "_blank");
         }
     </script>
+
     <script>
         function askAssistant() {
             var question = document.getElementById('assistant-input').value;
             if (question.trim() !== '') {
                 // Mock response, replace with actual logic
-                var response = "I'm sorry, I'm just a mock assistant. I don't have real answers.";
+                var response = "I'm sorry, please click on the "CHAT ME" button and you can ask Mr Qabid any question for assistance.THANK YOU....";
                 document.getElementById('assistant-response').innerText = response;
             }
         }
