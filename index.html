@@ -188,11 +188,11 @@
             border-radius: 5px;
             cursor: pointer;
         }
-	    /* Media queries for responsiveness */
-@media only screen and (max-width: 768px) {
+	    @media only screen and (max-width: 768px) {
     header {
         flex-direction: column;
         text-align: center;
+        padding: 15px; /* Add padding for better spacing */
     }
 
     nav ul {
@@ -206,14 +206,23 @@
 
     .product-container {
         grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+        gap: 15px; /* Adjust the gap for better spacing */
+        padding: 10px; /* Add padding for better spacing */
     }
 
     .product {
         width: 100%;
+        margin-bottom: 20px; /* Add margin for better spacing between products */
     }
 
-    .assistant-container {
-        width: 100%;
+    .blog-post,
+    .contact-section {
+        padding: 20px; /* Add padding for better spacing */
+        margin-bottom: 20px; /* Add margin for better spacing between sections */
+    }
+
+    footer {
+        text-align: center;
     }
 }
 
