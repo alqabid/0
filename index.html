@@ -1,320 +1,234 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DreamChasers Laptops - Your Ultimate Laptop Store</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DreamChasers Laptops - Premium Laptops</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css" />
 
     <script>
-        // Check for saved user preference, or system preference
-        const savedTheme = localStorage.getItem('theme');
-        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-        if (savedTheme) {
-            document.documentElement.setAttribute('data-theme', savedTheme);
-        } else if (systemPrefersDark) {
-            document.documentElement.setAttribute('data-theme', 'dark');
-        }
+        const savedTheme = localStorage.getItem('theme') || 'dark'; // Default to dark
+        document.documentElement.setAttribute('data-theme', savedTheme);
     </script>
 </head>
+
 <body>
 
-    <header>
-        <div class="logo"><strong>DreamChasers Laptops</strong></div>
+    <header class="navbar">
+        <a href="#home" class="logo">DC LAPTOPS</a>
 
-        <button id="menu-toggle" aria-label="Toggle menu">
+        <button class="menu-toggle" id="menu-toggle-button" aria-label="Toggle menu">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
         </button>
 
-        <div class="nav-wrapper">
-            <nav class="nav-links">
-                <ul>
-                    <li><a href="#banner">Home</a></li>
-                    <li><a href="#shop">Shop</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#blog">Blog</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-            <button id="theme-toggle" aria-label="Toggle dark mode">
-                <i class="fas fa-moon"></i> <i class="fas fa-sun"></i>
-            </button>
-        </div>
+        <nav class="nav-links" id="nav-links-menu">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#videos">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <button id="theme-toggle" aria-label="Toggle dark mode">
+            <i class="fas fa-moon"></i>
+            <i class="fas fa-sun"></i>
+        </button>
     </header>
 
     <main>
-        <section id="banner" class="reveal">
-            <h1>Find Your Next Laptop</h1>
-            <p>Your gateway to a world where dreams meet technology!</p>
-            <a href="#shop" class="cta-button">Browse All Laptops</a>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Find Your Next Laptop</h1>
+                <p>Your gateway to a world where dreams meet technology!</p>
+                <a class="btn-primary" href="#products">Browse Laptops</a>
+            </div>
         </section>
 
-        <section id="shop">
-            <h2 class="section-title reveal">Our Collection</h2>
+        <section id="products" class="section">
+            <h2 class="section-title">Our Collection</h2>
 
-            <div class="product-container">
-                <div class="product reveal">
+            <div class="product-grid">
+                <div class="product-card">
                     <img src="hp.jpg" alt="HP Laptop">
-                    <div class="product-details">
-                        <h3>HP LAPTOP</h3>
-                        <p>Powerful laptop with high-performance features. Perfect for gaming and work.</p>
-                        <p class="price">Price: Varies by specs</p>
-                        <button onclick="sendWhatsApp('HP LAPTOP')">Enquire on WhatsApp</button>
-                    </div>
+                    <h3>HP Laptop</h3>
+                    <p>Powerful laptop with high-performance features. Perfect for gaming and work.</p>
+                    <a href="https://wa.me/233238318021" class="btn-secondary" target="_blank">Enquire Now</a>
                 </div>
 
-                <div class="product reveal">
+                <div class="product-card">
                     <img src="macbook.jpg" alt="Macbook">
-                    <div class="product-details">
-                        <h3>MACBOOK</h3>
-                        <p>Sleek and stylish laptop with excellent portability and performance.</p>
-                        <p class="price">Price: Varies by specs</p>
-                        <button onclick="sendWhatsApp('Macbook')">Enquire on WhatsApp</button>
-                    </div>
+                    <h3>MacBook</h3>
+                    <p>Sleek and stylish laptop with excellent portability and performance.</p>
+                    <a href="https://wa.me/233238318021" class="btn-secondary" target="_blank">Enquire Now</a>
                 </div>
 
-                <div class="product reveal">
+                <div class="product-card">
                     <img src="dell.jpg" alt="Dell laptop">
-                    <div class="product-details">
-                        <h3>DELL LAPTOP</h3>
-                        <p>Ultra-slim and lightweight laptop for everyday use. Long-lasting battery life.</p>
-                        <p class="price">Price: Varies by specs</p>
-                        <button onclick="sendWhatsApp('Dell laptop')">Enquire on WhatsApp</button>
-                    </div>
+                    <h3>Dell Laptop</h3>
+                    <p>Ultra-slim and lightweight laptop for everyday use. Long-lasting battery life.</p>
+                    <a href="https://wa.me/233238318021" class="btn-secondary" target="_blank">Enquire Now</a>
                 </div>
 
-                <div class="product reveal">
+                <div class="product-card">
                     <img src="toshiba.jpg" alt="Toshiba">
-                    <div class="product-details">
-                        <h3>TOSHIBA</h3>
-                        <p>Convertible laptop with a touch screen for versatile usage. Ideal for professionals.</p>
-                        <p class="price">Price: Varies by specs</p>
-                        <button onclick="sendWhatsApp('TOSHIBA')">Enquire on WhatsApp</button>
-                    </div>
+                    <h3>Toshiba</h3>
+                    <p>Convertible laptop with a touch screen for versatile usage. Ideal for professionals.</p>
+                    <a href="https://wa.me/233238318021" class="btn-secondary" target="_blank">Enquire Now</a>
                 </div>
 
-                <div class="product reveal">
+                <div class="product-card">
                     <img src="lenovo.jpg" alt="Lenovo">
-                    <div class="product-details">
-                        <h3>LENOVO</h3>
-                        <p>High-end laptop with exceptional performance and graphics capabilities.</p>
-                        <p class="price">Price: Varies by specs</p>
-                        <button onclick="sendWhatsApp('lenovo')">Enquire on WhatsApp</button>
-                    </div>
+                    <h3>Lenovo</h3>
+                    <p>High-end laptop with exceptional performance and graphics capabilities.</p>
+                    <a href="https://wa.me/233238318021" class="btn-secondary" target="_blank">Enquire Now</a>
                 </div>
 
-                <div class="product reveal">
+                <div class="product-card">
                     <img src="acer.jpg" alt="Acer">
-                    <div class="product-details">
-                        <h3>ACER</h3>
-                        <p>Robust and durable laptop designed for rough use. Suitable for fieldwork.</p>
-                        <p class="price">Price: Varies by specs</p>
-                        <button onclick="sendWhatsApp('acer')">Enquire on WhatsApp</button>
-                    </div>
+                    <h3>Acer</h3>
+                    <p>Robust and durable laptop designed for rough use. Suitable for fieldwork.</p>
+                    <a href="https://wa.me/233238318021" class="btn-secondary" target="_blank">Enquire Now</a>
                 </div>
 
-                <div class="product reveal">
+                <div class="product-card">
                     <img src="samsung.jpg" alt="Samsung Laptop">
-                    <div class="product-details">
-                        <h3>SAMSUNG</h3>
-                        <p>Efficient and budget-friendly laptop for everyday computing tasks.</p>
-                        <p class="price">Price: Varies by specs</p>
-                        <button onclick="sendWhatsApp('Samsung Laptop')">Enquire on WhatsApp</button>
-                    </div>
+                    <h3>Samsung</h3>
+                    <p>Efficient and budget-friendly laptop for everyday computing tasks.</p>
+                    <a href="https://wa.me/233238318021" class="btn-secondary" target="_blank">Enquire Now</a>
                 </div>
 
-                <div class="product reveal">
+                <div class="product-card">
                     <img src="alienware.jpg" alt="Alienware Laptop">
-                    <div class="product-details">
-                        <h3>ALIENWARE</h3>
-                        <p>Highly customizable laptop with advanced configuration options.</p>
-                        <p class="price">Price: Varies by specs</p>
-                        <button onclick="sendWhatsApp('Alienware Laptop')">Enquire on WhatsApp</button>
-                    </div>
+                    <h3>Alienware</h3>
+                    <p>Highly customizable laptop with advanced configuration options.</p>
+                    <a href="https://wa.me/233238318021" class="btn-secondary" target="_blank">Enquire Now</a>
                 </div>
             </div>
         </section>
 
-        <section id="about" class="split-layout">
-            <div class="split-header reveal">
-                <h2>About Us</h2>
-                <p>Where passion for technology meets the thrill of chasing dreams.</p>
-                <a href="#contact" class="cta-button minimal">Get In Touch</a>
-            </div>
-            <div class="split-content reveal">
-                <div class="content-box">
-                    <h3>Our Mission</h3>
-                    <p>Welcome to Dream Chasers Laptops! We're not just a store; we're a community of tech enthusiasts dedicated to turning aspirations into reality, one laptop at a time. From sleek ultrabooks to powerhouse gaming rigs, we're here to fuel your journey of innovation...</p>
+        <section id="about" class="section">
+            <h2 class="section-title">About Us</h2>
+            <p class="about-text">
+                Welcome to Dream Chasers Laptops! We're not just a store; we're a community of tech enthusiasts
+                dedicated to turning aspirations into reality, one laptop at a time.
+                We ensure quality, honesty, and excellent customer service.
+            </p>
+        </section>
+
+        <section id="testimonials" class="section">
+            <h2 class="section-title">What Clients Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <blockquote>Best laptop plug on campus! Quality machines at good prices.</blockquote>
+                    <footer><cite> Emmanuel Asante CE 400</cite></footer>
+                </div>
+                <div class="testimonial-card">
+                    <blockquote>Very trustworthy seller. My laptop is working perfectly.</blockquote>
+                    <footer><cite> Emmanuella EL 300</cite></footer>
+                </div>
+                <div class="testimonial-card">
+                    <blockquote>Professional service. Fast delivery and clean products.</blockquote>
+                    <footer><cite> Boateng Derrick CE 400</cite></footer>
                 </div>
             </div>
         </section>
 
-        <section id="videos" class="reveal">
-            <h2 class="section-title reveal">Laptop Reviews</h2>
+        <section id="videos" class="section">
+            <h2 class="section-title">Laptop Reviews</h2>
             <div class="video-container">
-                <iframe class="reveal" width="560" height="315" src="https://www.youtube.com/embed/zDNwtdL2IfI" frameborder="0" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/zDNwtdL2IfI" frameborder="0" allowfullscreen></iframe>
 
-                <iframe class="reveal" width="560" height="315" src="https://www.youtube.com/embed/RgOut2vrM24" frameborder="0" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/RgOut2vrM24" frameborder="0" allowfullscreen></iframe>
 
-                <iframe class="reveal" width="560" height="315" src="https://www.youtube.com/embed/NQf2GO9hasg" frameborder="0" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/NQf2GO9hasg" frameborder="0" allowfullscreen></iframe>
 
-                <iframe class="reveal" width="560" height="315" src="https://www.youtube.com/embed/XEEcxYzNOfI" frameborder="0" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/XEEcxYzNOfI" frameborder="0" allowfullscreen></iframe>
             </div>
         </section>
 
-        <section id="more-info" class="multi-column-section">
-            <div id="blog" class="reveal">
-                <h2 class="section-title">From the Blog</h2>
-                <div class="content-box">
-                    <img src="top.jpg" alt="Blog Image" style="width:100%; border-radius: 8px; margin-bottom: 15px;">
-                    <h3>Unleashing the Power...</h3>
-                    <p>Hey Dream Chasers....</p>
-                    <a href="#" class="text-link">Read More &rarr;</a>
-                </div>
-            </div>
-
-            <div id="contact" class="reveal">
-                <h2 class="section-title">Get Support</h2>
-                <div class="content-box">
-                    <h3>Contact Us</h3>
-                    <p>Feel free to reach out with any inquiries:</p>
-                    <div class="contact-info">
-                        <p><i class="fas fa-envelope"></i> <a href="mailto:siakaabdulqabid@gmail.com">siakaabdulqabid@gmail.com</a></p>
-                        <p><i class="fas fa-phone"></i> <a href="tel:+233257030060">(233) 257030060</a></p>
+        <section id="contact" class="section">
+            <h2 class="section-title">Contact Us</h2>
+            <ul class="contact-list">
+                <li>
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <strong>Call / WhatsApp</strong>
+                        <a href="tel:+233238318021">+233 23 831 8021</a>
                     </div>
-
-                    <div class="assistant-container">
-                        <h4>Or, ask our IT Assistant</h4>
-                        <div class="assistant-io">
-                            <input type="text" id="assistant-input" placeholder="Ask a quick question...">
-                            <button id="assistant-btn" onclick="askAssistant()">Ask</button>
-                        </div>
-                        <div id="assistant-response"></div>
+                </li>
+                <li>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <strong>Location</strong>
+                        <span> Bantema, Kumasi </br> UMaT Essikado Campus</span>
                     </div>
-                </div>
-            </div>
+                </li>
+            </ul>
         </section>
-
     </main>
 
-    <footer>
+    <footer class="footer">
+        <p>© 2025 DreamChasers Laptops. All Rights Reserved.</p>
         <div class="social-icons">
-            <a href="..."><i class="fab fa-facebook"></i></a>
-            <a href="..."><i class="fab fa-twitter"></i></a>
-            <a href="..."><i class="fab fa-instagram"></i></a>
-            <a href="..."><i class="fab fa-linkedin"></i></a>
+            <a href="#" aria-label="Our Facebook Page"><i class="fab fa-facebook"></i></a>
+            <a href="#" aria-label="Our Instagram Page"><i class="fab fa-instagram"></i></a>
         </div>
-        <p>&copy; 2023 DreamChasers Laptops. All rights reserved.</p>
     </footer>
 
+    <a href="https://wa.me/233238318021" class="whatsapp-float" target="_blank" aria-label="Chat with us on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <script>
-        // --- WHATSAPP FUNCTION ---
-        function sendWhatsApp(productName) {
-            var message = "I'm interested in the " + productName + ". Can I get more details on specs and price?";
-            var encodedMessage = encodeURI(message);
-            window.open("https://wa.me/233238318021?text=" + encodedMessage, "_blank");
-        }
+        // --- Mobile Menu ---
+        const menuToggle = document.getElementById('menu-toggle-button');
+        const navLinks = document.getElementById('nav-links-menu');
+        const navLinksList = navLinks.querySelectorAll('a');
 
-        // --- SMART FAQ ASSISTANT SCRIPT ---
-        function askAssistant() {
-            var question = document.getElementById('assistant-input').value.toLowerCase();
-            var response = "";
-            var responseBox = document.getElementById('assistant-response');
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
 
-            if (question.trim() === '') { response = "Please type a question."; }
-            else if (question.includes("hp") || question.includes("dell") || question.includes("macbook")) {
-                response = "We have a wide selection of those brands. Please click 'Enquire on WhatsApp' for specific models and prices.";
-            }
-            else if (question.includes("price") || question.includes("how much")) {
-                response = "Prices vary based on specs. You can get the latest prices by clicking 'Enquire on WhatsApp' for the laptop you're interested in.";
-            }
-            else if (question.includes("contact") || question.includes("phone")) {
-                response = "You can reach us at (233) 257030060 or email siakaabdulqabid@gmail.com.";
-            }
-            else if (question.includes("location") || question.includes("where are you")) {
-                response = "We are based in Ghana and deliver nationwide. Contact us for specific delivery details.";
-            }
-            else if (question.includes("hello") || question.includes("hi")) {
-                response = "Hello! How can I help you? You can ask about our products, prices, or contact information.";
-            }
-            else {
-                response = "I'm sorry, I don't have the answer to that. For specific questions, please click 'Enquire on WhatsApp' on any product to chat directly with our team.";
-            }
+        // Close menu when a link is clicked
+        navLinksList.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
 
-            responseBox.innerText = response;
-            responseBox.style.display = 'block';
-        }
+        // --- Theme Swapper ---
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
 
-        // --- THEME TOGGLE SCRIPT ---
-        document.addEventListener('DOMContentLoaded', () => {
-            const themeToggle = document.getElementById('theme-toggle');
-            const html = document.documentElement;
+        // Set initial icon state
+        const updateIcon = () => {
+            const isDark = html.getAttribute('data-theme') === 'dark';
+            themeToggle.querySelector('.fa-moon').style.display = isDark ? 'none' : 'block';
+            themeToggle.querySelector('.fa-sun').style.display = isDark ? 'block' : 'none';
+        };
+        updateIcon();
 
-            const updateIcon = () => {
-                const isDark = html.getAttribute('data-theme') === 'dark';
-                themeToggle.querySelector('.fa-moon').style.display = isDark ? 'none' : 'block';
-                themeToggle.querySelector('.fa-sun').style.display = isDark ? 'block' : 'none';
-            };
+        // Handle click
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme); // Save preference
             updateIcon();
-
-            themeToggle.addEventListener('click', () => {
-                const currentTheme = html.getAttribute('data-theme');
-                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-                html.setAttribute('data-theme', newTheme);
-                localStorage.setItem('theme', newTheme);
-                updateIcon();
-            });
-        });
-
-        // --- HAMBURGER MENU SCRIPT ---
-        document.addEventListener('DOMContentLoaded', () => {
-            const menuToggle = document.getElementById('menu-toggle');
-            const navWrapper = document.querySelector('.nav-wrapper');
-            const navLinks = document.querySelectorAll('.nav-links a');
-
-            menuToggle.addEventListener('click', () => {
-                navWrapper.classList.toggle('active');
-                menuToggle.classList.toggle('active');
-            });
-
-            // Close menu when a link is clicked (for single-page app)
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    navWrapper.classList.remove('active');
-                    menuToggle.classList.remove('active');
-                });
-            });
-        });
-
-        // --- SCROLL REVEAL ANIMATION SCRIPT ---
-        document.addEventListener('DOMContentLoaded', () => {
-            const revealElements = document.querySelectorAll('.reveal');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            });
-
-            revealElements.forEach(el => {
-                observer.observe(el);
-            });
         });
     </script>
 
