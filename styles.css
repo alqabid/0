@@ -1,71 +1,675 @@
+/* --- 1. COLOR PALETTE & GLOBAL VARIABLES (With Fluid Sizes) --- */
+:root {
+    /* Fonts */
+    --font-primary: 'Poppins', sans-serif;
+    --font-secondary: 'Roboto', sans-serif;
+    /* Fluid Typography (Scales with screen size) */
+    --font-size-base: clamp(1rem, 1vw + 0.8rem, 1.1rem); /* Body text */
+    --font-size-h1: clamp(2.5rem, 5vw + 1rem, 3.5em); /* Hero title */
+    --font-size-h2: clamp(2rem, 4vw + 1rem, 2.8em); /* Section headers */
+    --font-size-h3: clamp(1.25rem, 2vw + 0.8rem, 1.5em); /* Card titles */
+    --font-size-h4: clamp(1.1rem, 1.5vw + 0.8rem, 1.25em); /* Assistant title */
+    /* Fluid Spacing */
+    --padding-section: clamp(3.5rem, 10vw - 1rem, 6rem); /* 60px to 100px */
+    /* Light Theme (Clean & Professional) */
+    --color-primary: #00796B; /* Deep Teal */
+    --color-primary-hover: #004D40;
+    --color-primary-rgb: 0, 121, 107;
+    --color-text: #1f2937;
+    --color-text-muted: #6b7280;
+    --color-bg: #f4f7f9; /* Light background */
+    --color-bg-card: #FFFFFF; /* Solid White */
+    --color-border: #e5e7eb;
+    --shadow-color: rgba(0, 0, 0, 0.05);
+    --neon-glow: transparent;
+    --neon-shadow: none;
+    --gradient-bg: linear-gradient(135deg, #f4f7f9, #e8eef3); /* Subtle gradient bg */
+}
+
+[data-theme="dark"] {
+    /* Dark Theme (Futuristic & Luminous) */
+    --color-primary: #29D6FF; /* Luminous Blue */
+    --color-primary-hover: #00BFFF;
+    --color-primary-rgb: 41, 214, 255;
+    --color-text: #e5e7eb;
+    --color-text-muted: #9ca3af;
+    --color-bg: #0d1117; /* Dark background */
+    --color-bg-card: #16213E; /* Solid Dark Blue */
+    --color-border: rgba(41, 214, 255, 0.3);
+    --shadow-color: rgba(41, 214, 255, 0.1);
+    --neon-glow: var(--color-primary);
+    --neon-shadow: 0 0 8px var(--neon-glow), 0 0 15px var(--neon-glow);
+    --gradient-bg: linear-gradient(135deg, #0d1117, #16213E); /* Dark gradient bg */
+}
+
+/* --- 2. GLOBAL STYLES --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
+    font-family: var(--font-secondary);
+    background: var(--gradient-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+    transition: background 0.5s ease, color 0.5s ease;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    font-size: var(--font-size-base); /* Fluid body text */
 }
 
-/* ... (existing styles) ... */
-
-.contact-info {
-    margin-bottom: 20px;
+h1, h2, h3, h4 {
+    font-family: var(--font-primary);
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-shadow: var(--neon-shadow);
+    transition: text-shadow 0.5s ease;
+    line-height: 1.2; /* Tighter line height for headings */
 }
 
-.call-logo img {
-    width: 50px; /* Adjust the size of your phone icon as needed */
+/* Apply fluid sizes */
+h1 {
+    font-size: var(--font-size-h1);
+}
+
+h2 {
+    font-size: var(--font-size-h2);
+}
+
+h3 {
+    font-size: var(--font-size-h3);
+}
+
+h4 {
+    font-size: var(--font-size-h4);
+}
+
+h2.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+    letter-spacing: 1px;
+}
+
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+    a:hover {
+        color: var(--color-primary-hover);
+        text-decoration: underline;
+    }
+
+section {
+    padding: var(--padding-section) 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* --- 3. HEADER & NAV (Solid) --- */
+header {
+    background-color: var(--color-bg-card);
+    border-bottom: 1px solid var(--color-border);
+    box-shadow: 0 4px 15px var(--shadow-color);
+    padding: 20px 30px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: background-color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--font-primary);
+    font-size: 1.6em;
+    font-weight: 700;
+    text-shadow: var(--neon-shadow);
+    color: var(--color-primary);
+    z-index: 10;
+}
+
+.nav-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-links ul {
+    display: flex;
+    list-style: none;
+    gap: 15px;
+}
+
+.nav-links li a {
+    color: var(--color-text);
+    font-weight: 500;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease, text-shadow 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .nav-links li a:hover,
+    .nav-links li a:focus {
+        background-color: rgba(var(--color-primary-rgb), 0.1);
+        text-shadow: 0 0 3px var(--neon-glow);
+        box-shadow: 0 0 8px rgba(var(--color-primary-rgb), 0.5);
+        color: var(--color-primary);
+        text-decoration: none;
+    }
+
+#menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
     cursor: pointer;
+    z-index: 10;
+    padding: 5px;
 }
 
-@media only screen and (max-width: 768px) {
-    /* Adjust styles for smaller screens (e.g., mobile devices) */
-
-    header {
-        flex-direction: column;
-        align-items: center;
+    #menu-toggle .bar {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 5px 0;
+        background-color: var(--color-text);
+        border-radius: 3px;
+        transition: all 0.3s ease-in-out;
     }
 
-    .logo {
-        margin-bottom: 10px;
+    #menu-toggle.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
     }
 
-    nav {
-        margin-top: 20px;
+    #menu-toggle.active .bar:nth-child(2) {
+        opacity: 0;
     }
 
-    nav ul {
-        flex-direction: column;
-        align-items: center;
+    #menu-toggle.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
     }
 
-    nav ul li {
-        margin-right: 0;
-        margin-bottom: 10px;
+
+#theme-toggle {
+    background: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    color: var(--color-text);
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+    #theme-toggle:hover {
+        color: var(--color-primary);
+        box-shadow: 0 0 8px var(--neon-glow);
     }
 
-    section {
-        padding: 20px;
+    #theme-toggle .fa-sun {
+        display: none;
     }
 
-    .product {
-        flex-direction: column;
+[data-theme="dark"] #theme-toggle .fa-sun {
+    display: block;
+}
+
+[data-theme="dark"] #theme-toggle .fa-moon {
+    display: none;
+}
+
+
+/* --- 4. HERO (BANNER) SECTION --- */
+#banner {
+    text-align: center;
+    padding-top: var(--padding-section);
+    padding-bottom: var(--padding-section);
+    position: relative;
+    overflow: hidden;
+}
+
+    #banner h1 {
+        margin-bottom: 20px;
+        background: linear-gradient(45deg, var(--color-primary), var(--color-primary-hover));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 0 10px rgba(var(--color-primary-rgb), 0.3);
+    }
+
+[data-theme="dark"] #banner h1 {
+    background: linear-gradient(45deg, var(--color-primary), #a2d2ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: var(--neon-shadow);
+}
+
+#banner p {
+    font-size: 1.2em;
+    color: var(--color-text-muted);
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-button {
+    background-color: var(--color-primary);
+    color: #FFFFFF;
+    padding: 16px 32px;
+    font-size: 1.1em;
+    font-weight: 700;
+    border-radius: 50px;
+    text-decoration: none;
+    margin-top: 20px;
+    box-shadow: 0 5px 15px rgba(var(--color-primary-rgb), 0.3);
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .cta-button:hover {
+        background-color: var(--color-primary-hover);
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 8px 25px rgba(var(--color-primary-rgb), 0.5);
+        text-decoration: none;
+    }
+
+    .cta-button.minimal {
+        background: transparent;
+        color: var(--color-primary);
+        border: 2px solid var(--color-primary);
+        box-shadow: none;
+    }
+
+        .cta-button.minimal:hover {
+            background-color: var(--color-primary);
+            color: white;
+            box-shadow: 0 5px 15px rgba(var(--color-primary-rgb), 0.3);
+        }
+
+
+/* --- 5. PRODUCT GRID & CARDS (Solid) --- */
+.product-container {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.product {
+    background-color: var(--color-bg-card);
+    border-radius: 15px;
+    box-shadow: 0 6px 20px var(--shadow-color);
+    border: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s ease, background-color 0.4s ease, border-color 0.4s ease;
+    transform: perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1);
+}
+
+    .product:hover {
+        transform: perspective(1000px) rotateY(2deg) rotateX(-2deg) scale(1.03);
+        box-shadow: 0 12px 30px var(--shadow-color), 0 0 10px var(--neon-glow);
     }
 
     .product img {
-        max-width: 100%; /* Make images responsive */
+        border-radius: 15px 15px 0 0;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        filter: brightness(0.95);
+        transition: filter 0.3s ease;
     }
 
-    .product-details {
+    .product:hover img {
+        filter: brightness(1.05);
+    }
+
+.product-details {
+    padding: 30px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+    .product-details h3 {
+        margin-top: 0;
+        color: var(--color-text);
+        text-shadow: none;
+    }
+
+    .product-details p {
+        color: var(--color-text-muted);
+        flex-grow: 1;
+        margin-bottom: 1rem;
+    }
+
+    .product-details .price {
+        font-size: 1.2em;
+        font-weight: 700;
+        color: var(--color-text);
+        margin: 0 0 1.5rem 0;
+        flex-grow: 0;
+    }
+
+    .product-details button {
+        background-color: var(--color-primary);
+        border: none;
+        border-radius: 8px;
+        color: white;
+        cursor: pointer;
+        padding: 15px 28px;
+        font-weight: 600;
+        font-family: var(--font-secondary);
+        font-size: 1.05em;
+        width: 100%;
+        box-shadow: 0 3px 10px rgba(var(--color-primary-rgb), 0.2);
+        transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .product-details button:hover {
+            background-color: var(--color-primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(var(--color-primary-rgb), 0.4);
+        }
+
+/* --- 6. LAYOUTS (Split & Multi-Column) --- */
+.split-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+    gap: 40px;
+}
+
+.split-header h2 {
+    text-align: left;
+    margin-bottom: 20px;
+    color: var(--color-primary);
+}
+
+.split-header p {
+    font-size: 1.2em;
+    color: var(--color-text-muted);
+    margin-bottom: 30px;
+}
+
+.multi-column-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+/* --- 7. CONTENT BOXES (Solid) --- */
+.content-box {
+    background-color: var(--color-bg-card);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px var(--shadow-color);
+    border: 1px solid var(--color-border);
+    transition: background-color 0.5s ease, border-color 0.5s ease;
+    height: 100%;
+}
+
+    .content-box h3 {
+        color: var(--color-primary);
+        margin-bottom: 20px;
+        text-shadow: none;
+    }
+
+.text-link {
+    font-weight: 700;
+    color: var(--color-primary);
+    display: inline-block;
+    margin-top: 15px;
+}
+
+    .text-link:hover {
+        text-shadow: 0 0 5px var(--neon-glow);
+        text-decoration: none;
+    }
+
+.contact-info p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1em;
+    margin: 15px 0;
+}
+
+    .contact-info p i {
+        color: var(--color-primary);
+        width: 20px;
         text-align: center;
-        padding: 20px;
     }
 
-    .contact-info {
-        margin-bottom: 10px;
+    .contact-info p a {
+        color: var(--color-text);
+        transition: color 0.3s ease;
     }
 
-    .call-logo img {
-        width: 30px; /* Adjust the size for smaller screens */
+        .contact-info p a:hover {
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+
+/* --- 8. VIDEO SECTION --- */
+.video-container {
+    display: grid;
+    gap: 25px;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+}
+
+    .video-container iframe {
+        width: 100%;
+        border-radius: 12px;
+        aspect-ratio: 16 / 9;
+        border: 2px solid var(--color-border);
+        box-shadow: 0 4px 15px var(--shadow-color);
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
     }
 
-    footer {
+        .video-container iframe:hover {
+            border-color: var(--color-primary);
+            box-shadow: 0 6px 20px rgba(var(--color-primary-rgb), 0.3);
+        }
+
+
+/* --- 9. INTEGRATED ASSISTANT --- */
+.assistant-container {
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 30px;
+    box-shadow: inset 0 2px 4px var(--shadow-color);
+}
+
+[data-theme="dark"] .assistant-container {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.assistant-container h4 {
+    color: var(--color-text);
+    text-shadow: none;
+    text-align: center;
+    font-weight: 600;
+}
+
+.assistant-io {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 15px;
+}
+
+#assistant-input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid var(--color-border);
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+    font-size: 14px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+[data-theme="dark"] #assistant-input {
+    background-color: #0d1117;
+    color: var(--color-text);
+}
+
+#assistant-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.3);
+}
+
+#assistant-btn {
+    background-color: var(--color-primary);
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+    #assistant-btn:hover {
+        background-color: var(--color-primary-hover);
+    }
+
+#assistant-response {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: rgba(var(--color-primary-rgb), 0.05);
+    border-radius: 5px;
+    line-height: 1.5;
+    display: none;
+    font-size: 14px;
+    border: 1px dashed var(--color-border);
+}
+
+/* --- 10. FOOTER (Solid) --- */
+footer {
+    background-color: var(--color-bg-card);
+    border-top: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    padding: 40px 20px;
+    text-align: center;
+    margin-top: 60px;
+    transition: background-color 0.5s ease, border-color 0.5s ease;
+}
+
+.social-icons {
+    margin-bottom: 20px;
+}
+
+    .social-icons a {
+        color: var(--color-text-muted);
+        font-size: 24px;
+        margin: 0 15px;
+        transition: color 0.3s ease;
+    }
+
+        .social-icons a:hover {
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+/* --- 11. ANIMATION & RESPONSIVENESS --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+    .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 900px) {
+    #menu-toggle {
+        display: block;
+    }
+
+    .nav-wrapper {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 300px;
+        height: 100vh;
+        background-color: var(--color-bg-card);
+        backdrop-filter: blur(20px); /* Keep blur for mobile menu only */
+        padding: 80px 30px 30px 30px;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 5;
+    }
+
+        .nav-wrapper.active {
+            transform: translateX(0);
+        }
+
+    .nav-links {
+        width: 100%;
+    }
+
+        .nav-links ul {
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .nav-links li a {
+            font-size: 1.2em;
+        }
+
+    #theme-toggle {
+        margin-top: 30px;
+    }
+
+    .split-layout, .multi-column-section {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .split-header {
         text-align: center;
+    }
+
+        .split-header h2 {
+            text-align: center;
+        }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 15px 20px;
+    }
+    /* Fluid typography handles the rest of the text sizing */
+}
+
+@media (max-width: 480px) {
+    .video-container {
+        grid-template-columns: 1fr;
     }
 }
