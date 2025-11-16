@@ -1,408 +1,322 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DreamChasers Laptops - Your Ultimate Laptop Store</title>
-    <link rel="stylesheet" href="styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <style>
-        
-    body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #f1f1f1;
-    }
 
-    .background {
-        background: url('gee.jpg') no-repeat center center fixed;
-        background-size: cover;
-        filter: blur(5px);
-        -webkit-filter: blur(5px);
-        height: 100vh;
-        position: fixed;
-        width: 100%;
-        z-index: -1;
-    }
+    <link rel="stylesheet" href="styles.css">
 
-    .container {
-        background: url('');
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        margin: 0 auto;
-        max-width: 1200px;
-        position: relative;
-        z-index: 1;
-    }
+    <script>
+        // Check for saved user preference, or system preference
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-    header {
-        background-color:#333;
-        color: white;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 30px;
-    }
-
-    nav ul {
-        display: flex;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-    }
-
-    nav ul li {
-        margin-right: 20px;
-    }
-
-    nav ul li a {
-        color: white;
-        font-weight: bold;
-        text-decoration: none;
-    }
-
-    section {
-        color: white;
-        padding: 40px;
-    }
-
-    footer {
-        background-color: #333;
-        color: white;
-        padding: 20px;
-        position: absolute;
-        bottom: 0;
-        text-align: center;
-        width: 100%;
-		
-		
-    }
-
-    .product-container {
-        display: grid;
-        gap: 20px;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        padding: 20px;
-    }
-
-    .product {
-        background-color: rgba(0, 0, 0, 0.9);
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.17) ;
-        padding: 20px;
-        text-align: center;
-    }
-
-    .product img {
-        border-radius: 10px;
-        margin-bottom: 15px;
-        max-width: 100%;
-    }
-
-    .product-details {
-        text-align: left;
-    }
-
-    button {
-        background-color: #4CAF50;
-        border: none;
-        border-radius: 5px;
-        color: white;
-        cursor: pointer;
-        padding: 10px 20px;
-    }
-
-    button:hover {
-        background-color: #45a049;
-    }
-
-    .contact-section {
-        margin-top: 40px;
-        text-align: center;
-    }
-
-    .contact-section p {
-        margin: 10px 0;
-    }
-
-    .about-section {
-        margin-top: 40px;
-    }
-
-    .blog-section {
-        margin-top: 40px;
-		
-    }
-
-    .social-icons {
-        margin-top: 20px;
-    }
-
-    .social-icons a {
-        color: white;
-        font-size: 20px;
-        margin-right: 10px;
-    }
-
-
-        /* Additional styles for the blog section */
-        .blog-post {
-           background-color: rgba(0, 0, 0, 0.7);
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
-            padding: 20px;
-            margin-bottom: 20px;
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        } else if (systemPrefersDark) {
+            document.documentElement.setAttribute('data-theme', 'dark');
         }
-
-        .blog-post img {
-            max-width: 100%;
-            border-radius: 8px;
-            margin-bottom: 15px;
-        }
-
-        /* Style for the IT assistant interaction */
-        .assistant-container {
-            background-color: rgba(0, 0, 0, 0.9);
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 20px;
-        }
-
-        #assistant-input {
-            width: 70%;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-        }
-
-        #assistant-response {
-            margin-top: 10px;
-        }
-
-        #assistant-btn {
-            background-color: #4CAF50;
-            border: none;
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-		
-    </style>
+    </script>
 </head>
-
 <body>
-    <div class="background"></div>
-    
-        <header>
-            <div class="logo"><strong>DreamChasers Laptops</strong></div>
-            <nav>
+
+    <header>
+        <div class="logo"><strong>DreamChasers Laptops</strong></div>
+
+        <button id="menu-toggle" aria-label="Toggle menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+
+        <div class="nav-wrapper">
+            <nav class="nav-links">
                 <ul>
                     <li><a href="#banner">Home</a></li>
                     <li><a href="#shop">Shop</a></li>
                     <li><a href="#about">About Us</a></li>
-                    <li><a href="#contact">Contact</a></li>
                     <li><a href="#blog">Blog</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
-        </header>
-		<div class="container">
+            <button id="theme-toggle" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i> <i class="fas fa-sun"></i>
+            </button>
+        </div>
+    </header>
 
-        <section id="banner">
-            <h1>Welcome to DreamChasers Laptops</h1>
+    <main>
+        <section id="banner" class="reveal">
+            <h1>Find Your Next Laptop</h1>
             <p>Your gateway to a world where dreams meet technology!</p>
+            <a href="#shop" class="cta-button">Browse All Laptops</a>
         </section>
 
         <section id="shop">
-            <h2>Shop</h2>
+            <h2 class="section-title reveal">Our Collection</h2>
+
             <div class="product-container">
-                <!-- Product 1 -->
-                <div class="product">
+                <div class="product reveal">
                     <img src="hp.jpg" alt="HP Laptop">
                     <div class="product-details">
                         <h3>HP LAPTOP</h3>
-                        <p>Powerful laptop with high-performance features. Perfect for gaming and work. Ideal for students.</p>
-                        <p>Price: [The price varies on specs and type]</p>
-                        <button onclick="sendWhatsApp('HP LAPTOP')">CHAT ME</button>
+                        <p>Powerful laptop with high-performance features. Perfect for gaming and work.</p>
+                        <p class="price">Price: Varies by specs</p>
+                        <button onclick="sendWhatsApp('HP LAPTOP')">Enquire on WhatsApp</button>
                     </div>
                 </div>
 
-                <!-- Add more product listings as needed -->
-                <!-- Product 2 -->
-                <div class="product">
+                <div class="product reveal">
                     <img src="macbook.jpg" alt="Macbook">
                     <div class="product-details">
-                        <h3>MACBOOK </h3>
+                        <h3>MACBOOK</h3>
                         <p>Sleek and stylish laptop with excellent portability and performance.</p>
-                        <p>Price: [The price varies on specs and type]</p>
-                        <button onclick="sendWhatsApp('Macbook')">CHAT ME</button>
+                        <p class="price">Price: Varies by specs</p>
+                        <button onclick="sendWhatsApp('Macbook')">Enquire on WhatsApp</button>
                     </div>
                 </div>
 
-                <!-- Product 3 -->
-                <div class="product">
+                <div class="product reveal">
                     <img src="dell.jpg" alt="Dell laptop">
                     <div class="product-details">
                         <h3>DELL LAPTOP</h3>
                         <p>Ultra-slim and lightweight laptop for everyday use. Long-lasting battery life.</p>
-                        <p>Price: [The price varies on specs and type]</p>
-                        <button onclick="sendWhatsApp('Dell laptop')">CHAT ME</button>
+                        <p class="price">Price: Varies by specs</p>
+                        <button onclick="sendWhatsApp('Dell laptop')">Enquire on WhatsApp</button>
+                    </div>
+                </div>
+
+                <div class="product reveal">
+                    <img src="toshiba.jpg" alt="Toshiba">
+                    <div class="product-details">
+                        <h3>TOSHIBA</h3>
+                        <p>Convertible laptop with a touch screen for versatile usage. Ideal for professionals.</p>
+                        <p class="price">Price: Varies by specs</p>
+                        <button onclick="sendWhatsApp('TOSHIBA')">Enquire on WhatsApp</button>
+                    </div>
+                </div>
+
+                <div class="product reveal">
+                    <img src="lenovo.jpg" alt="Lenovo">
+                    <div class="product-details">
+                        <h3>LENOVO</h3>
+                        <p>High-end laptop with exceptional performance and graphics capabilities.</p>
+                        <p class="price">Price: Varies by specs</p>
+                        <button onclick="sendWhatsApp('lenovo')">Enquire on WhatsApp</button>
+                    </div>
+                </div>
+
+                <div class="product reveal">
+                    <img src="acer.jpg" alt="Acer">
+                    <div class="product-details">
+                        <h3>ACER</h3>
+                        <p>Robust and durable laptop designed for rough use. Suitable for fieldwork.</p>
+                        <p class="price">Price: Varies by specs</p>
+                        <button onclick="sendWhatsApp('acer')">Enquire on WhatsApp</button>
+                    </div>
+                </div>
+
+                <div class="product reveal">
+                    <img src="samsung.jpg" alt="Samsung Laptop">
+                    <div class="product-details">
+                        <h3>SAMSUNG</h3>
+                        <p>Efficient and budget-friendly laptop for everyday computing tasks.</p>
+                        <p class="price">Price: Varies by specs</p>
+                        <button onclick="sendWhatsApp('Samsung Laptop')">Enquire on WhatsApp</button>
+                    </div>
+                </div>
+
+                <div class="product reveal">
+                    <img src="alienware.jpg" alt="Alienware Laptop">
+                    <div class="product-details">
+                        <h3>ALIENWARE</h3>
+                        <p>Highly customizable laptop with advanced configuration options.</p>
+                        <p class="price">Price: Varies by specs</p>
+                        <button onclick="sendWhatsApp('Alienware Laptop')">Enquire on WhatsApp</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="split-layout">
+            <div class="split-header reveal">
+                <h2>About Us</h2>
+                <p>Where passion for technology meets the thrill of chasing dreams.</p>
+                <a href="#contact" class="cta-button minimal">Get In Touch</a>
+            </div>
+            <div class="split-content reveal">
+                <div class="content-box">
+                    <h3>Our Mission</h3>
+                    <p>Welcome to Dream Chasers Laptops! We're not just a store; we're a community of tech enthusiasts dedicated to turning aspirations into reality, one laptop at a time. From sleek ultrabooks to powerhouse gaming rigs, we're here to fuel your journey of innovation...</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="videos" class="reveal">
+            <h2 class="section-title reveal">Laptop Reviews</h2>
+            <div class="video-container">
+                <iframe class="reveal" width="560" height="315" src="https://www.youtube.com/embed/zDNwtdL2IfI" frameborder="0" allowfullscreen></iframe>
+
+                <iframe class="reveal" width="560" height="315" src="https://www.youtube.com/embed/RgOut2vrM24" frameborder="0" allowfullscreen></iframe>
+
+                <iframe class="reveal" width="560" height="315" src="https://www.youtube.com/embed/NQf2GO9hasg" frameborder="0" allowfullscreen></iframe>
+
+                <iframe class="reveal" width="560" height="315" src="https://www.youtube.com/embed/XEEcxYzNOfI" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </section>
+
+        <section id="more-info" class="multi-column-section">
+            <div id="blog" class="reveal">
+                <h2 class="section-title">From the Blog</h2>
+                <div class="content-box">
+                    <img src="top.jpg" alt="Blog Image" style="width:100%; border-radius: 8px; margin-bottom: 15px;">
+                    <h3>Unleashing the Power...</h3>
+                    <p>Hey Dream Chasers... [rest of your text] ...</p>
+                    <a href="#" class="text-link">Read More &rarr;</a>
+                </div>
+            </div>
+
+            <div id="contact" class="reveal">
+                <h2 class="section-title">Get Support</h2>
+                <div class="content-box">
+                    <h3>Contact Us</h3>
+                    <p>Feel free to reach out with any inquiries:</p>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:siakaabdulqabid@gmail.com">siakaabdulqabid@gmail.com</a></p>
+                        <p><i class="fas fa-phone"></i> <a href="tel:+233257030060">(233) 257030060</a></p>
                     </div>
 
-            </div>
-			
-            <div class="product">
-                <img src="toshiba.jpg" alt="Toshiba">
-                <div class="product-details">
-                    <h3>TOSHIBA</h3>
-                    <p>Convertible laptop with a touch screen for versatile usage. Ideal for professionals.</p>
-                    <p>Price: [The price varies on specs and type]</p>
-                    <button onclick="sendWhatsApp('TOSHIBA ')">CHAT ME</button>
+                    <div class="assistant-container">
+                        <h4>Or, ask our IT Assistant</h4>
+                        <div class="assistant-io">
+                            <input type="text" id="assistant-input" placeholder="Ask a quick question...">
+                            <button id="assistant-btn" onclick="askAssistant()">Ask</button>
+                        </div>
+                        <div id="assistant-response"></div>
+                    </div>
                 </div>
-            </div>
-			
-            <div class="product">
-                <img src="lenovo.jpg" alt="Lenovo">
-                <div class="product-details">
-                    <h3>LENOVO</h3>
-                    <p>High-end laptop with exceptional performance and graphics capabilities. Perfect for gaming enthusiasts.</p>
-                    <p>Price: [The price varies on specs and type]</p>
-                    <button onclick="sendWhatsApp('lenovo')">CHAT ME</button>
-                </div>
-            </div>
-
-            <div class="product">
-                <img src="acer.jpg" alt="Acer">
-                <div class="product-details">
-                    <h3>ACER</h3>
-                    <p>Robust and durable laptop designed for rough use. Suitable for outdoor activities and fieldwork.</p>
-                    <p>Price:[The price varies on specs and type]</p>
-                    <button onclick="sendWhatsApp('acer')">CHAT ME</button>
-                </div>
-            </div>
-
-            <div class="product">
-                <img src="samsung.jpg" alt="Samsung Laptop">
-                <div class="product-details">
-                    <h3>SAMSUNG</h3>
-                    <p>Efficient and budget-friendly laptop for everyday computing tasks. Ideal for students.</p>
-                    <p>Price: [The price varies on specs and type]</p>
-                    <button onclick="sendWhatsApp('Samsung Laptop')">CHAT ME</button>
-                </div>
-            </div>
-
-            <div class="product">
-                <img src="alienware.jpg" alt="Alienware Laptop">
-                <div class="product-details">
-                    <h3>ALIENWARE</h3>
-                    <p>Highly customizable laptop with advanced configuration options. Tailor it to your specific needs.</p>
-                    <p>Price:[The price varies on specs and type]</p>
-                    <button onclick="sendWhatsApp('Alienware Laptop')">CHAT ME</button>
-                </div>
-            </div>
-
-        </section>
-
-        <section id="about" class="about-section"><div class="blog-post">
-            <h2>About Us</h2>
-            <p>Welcome to Dream Chasers Laptops, where passion for technology meets the thrill of chasing dreams! We're not just a store; we're a community of tech enthusiasts dedicated to turning aspirations into reality, one laptop at a time. From sleek ultrabooks to powerhouse gaming rigs, we're here to fuel your journey of innovation. Because at Dream Chasers, we believe that the right laptop can be the catalyst for extraordinary adventures. Join us in the pursuit of dreams – where every click, every keystroke, takes you one step closer to greatness!</p>
             </div>
         </section>
 
-        <section id="blog" class="blog-section">
-            <h2>Blog</h2>
+    </main>
 
-            <div class="blog-post">
-                <img src="top.jpg" alt="Blog Image">
-                <h3>Title: "Unleashing the Power: A Deep Dive into Our Latest Gaming Laptops"</h3>
-                <p>
-                    Hey Dream Chasers,
+    <footer>
+        <div class="social-icons">
+            <a href="..."><i class="fab fa-facebook"></i></a>
+            <a href="..."><i class="fab fa-twitter"></i></a>
+            <a href="..."><i class="fab fa-instagram"></i></a>
+            <a href="..."><i class="fab fa-linkedin"></i></a>
+        </div>
+        <p>&copy; 2023 DreamChasers Laptops. All rights reserved.</p>
+    </footer>
 
-                    Welcome back to the Dream Chasers Laptops blog! Today, we're diving into the heart of gaming excellence with our latest lineup of high-performance laptops. If you're a gamer, tech enthusiast, or someone who just appreciates raw computing power, this one's for you.
 
-                    <!-- More content goes here -->
-
-                    Read the full post <a href="https://www.google.com/blog-post">Here</a> and let the gaming adventure begin!
-
-                    Happy chasing!
-
-                    [Abdul Qabid Siaka]
-                    Dream Chasers Laptops Team
-                </p>
-            </div>
-
-            <!-- Add more blog posts as needed -->
-        </section>
-
-        <section id="contact" class="contact-section">
-		<div class="blog-post">
-            <h2>Contact Us</h2>
-            <p>Feel free to reach out to us via email if you have any inquiries:</p>
-            <!-- Your Contact Information -->
-            <div class="contact-info">
-                <p>Email:<a href="mailto:siakaabdulqabid@gmail.com">siakaabdulqabid@gmail.com</a></p>
-                <p>Phone: (233) 257030060</p>
-            </div>
-
-            <!-- Call Logo -->
-            <div class="call-logo">
-                <a href="tel:+233257030060">
-                    <img src="phone-icon.png" alt="Call Us">
-                </a>
-            </div>
-			</div>
-        </section>
-		<div class="blog-post">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/jW6B-hYyZl0?si=Qtdv_owb522gN62U" frameborder="0" allowfullscreen></iframe>
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Ed0dWP01FkI?si=BZ0T37zrmuAxUaQJ" frameborder="0" allowfullscreen></iframe>
-</br>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/r7COWvxlN5g?si=jnRJAK5EQz8FG__3" frameborder="0" allowfullscreen></iframe>
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed//H71IxqmCfxQ?si=do0p1OvHaBP4K6qy" frameborder="0" allowfullscreen></iframe>
-</div>
-</br>
-
-        <footer>
-            <div class="social-icons">
-                <a href="https://www.facebook.com//profile.php?id=100078204849117" target="_blank"><i class="fab fa-facebook"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-                <a href="https://www.instagram.com/_qab._/" target="_blank"><i class="fab fa-instagram"></i></a>
-               <a href="https://www.linkedin.com/in/abdul-qabid-siaka-843165238" target="_blank"><i class="fab fa-linkedin"></i></a>
-
-            </div>
-            <p>&copy; 2023 DreamChasers Laptops. All rights reserved.</p>
-        </footer>
-    </div>
-
-    <!-- IT Assistant Interaction -->
-    <div class="assistant-container">
-        <h2>IT Assistant</h2>
-        <input type="text" id="assistant-input" placeholder="Ask me a question...">
-        <button id="assistant-btn" onclick="askAssistant()">Ask</button>
-        <div id="assistant-response"></div>
-    </div>
-	<script>
+    <script>
+        // --- WHATSAPP FUNCTION ---
         function sendWhatsApp(productName) {
-            var message = "I want to know the available ; " + productName;
+            var message = "I'm interested in the " + productName + ". Can I get more details on specs and price?";
             var encodedMessage = encodeURI(message);
             window.open("https://wa.me/233238318021?text=" + encodedMessage, "_blank");
         }
-    </script>
 
-    <script>
+        // --- SMART FAQ ASSISTANT SCRIPT ---
         function askAssistant() {
-            var question = document.getElementById('assistant-input').value;
-            if (question.trim() !== '') {
-                // Mock response, replace with actual logic
-                var response =  "I'm sorry, please click on the "CHAT ME" button and you can ask Mr Qabid any question for assistance.THANK YOU....";
-                document.getElementById('assistant-response').innerText = response;
-            }
-        }
-    </script>
-</body>
+            var question = document.getElementById('assistant-input').value.toLowerCase();
+            var response = "";
+            var responseBox = document.getElementById('assistant-response');
 
+            if (question.trim() === '') { response = "Please type a question."; }
+            else if (question.includes("hp") || question.includes("dell") || question.includes("macbook")) {
+                response = "We have a wide selection of those brands. Please click 'Enquire on WhatsApp' for specific models and prices.";
+            }
+            else if (question.includes("price") || question.includes("how much")) {
+                response = "Prices vary based on specs. You can get the latest prices by clicking 'Enquire on WhatsApp' for the laptop you're interested in.";
+            }
+            else if (question.includes("contact") || question.includes("phone")) {
+                response = "You can reach us at (233) 257030060 or email siakaabdulqabid@gmail.com.";
+            }
+            else if (question.includes("location") || question.includes("where are you")) {
+                response = "We are based in Ghana and deliver nationwide. Contact us for specific delivery details.";
+            }
+            else if (question.includes("hello") || question.includes("hi")) {
+                response = "Hello! How can I help you? You can ask about our products, prices, or contact information.";
+            }
+            else {
+                response = "I'm sorry, I don't have the answer to that. For specific questions, please click 'Enquire on WhatsApp' on any product to chat directly with our team.";
+            }
+
+            responseBox.innerText = response;
+            responseBox.style.display = 'block';
+        }
+
+        // --- THEME TOGGLE SCRIPT ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggle = document.getElementById('theme-toggle');
+            const html = document.documentElement;
+
+            const updateIcon = () => {
+                const isDark = html.getAttribute('data-theme') === 'dark';
+                themeToggle.querySelector('.fa-moon').style.display = isDark ? 'none' : 'block';
+                themeToggle.querySelector('.fa-sun').style.display = isDark ? 'block' : 'none';
+            };
+            updateIcon();
+
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = html.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                html.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateIcon();
+            });
+        });
+
+        // --- HAMBURGER MENU SCRIPT ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.getElementById('menu-toggle');
+            const navWrapper = document.querySelector('.nav-wrapper');
+            const navLinks = document.querySelectorAll('.nav-links a');
+
+            menuToggle.addEventListener('click', () => {
+                navWrapper.classList.toggle('active');
+                menuToggle.classList.toggle('active');
+            });
+
+            // Close menu when a link is clicked (for single-page app)
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    navWrapper.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                });
+            });
+        });
+
+        // --- SCROLL REVEAL ANIMATION SCRIPT ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const revealElements = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            revealElements.forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+
+</body>
 </html>
